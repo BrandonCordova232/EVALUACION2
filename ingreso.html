@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt;>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="javascript/validaciones.js"></script>
+    <title>Ingreso usuario</title>
+    <link rel="stylesheet" href="diseño/diseño.css">
+    <link rel="stylesheet" href="diseño/bootstrap-5.0.0-beta3-dist">
+    <link rel="icon" href="imagenes/logo-luna.jpg">
+</head>
+<body id="ingreso">
+    <div class="barras-laterales-1"></div>
+    <div class="barras-laterales-2"></div>
+    <div class="wrap" id="ingreso-usuario">
+            <span class="word"><s>MoonShop</s></span>
+    </div>
+    <div class="estrella">
+        <img src="imagenes/estrella.png" alt="">
+    </div>
+    <div class="estrella-2">
+        <img src="imagenes/estrella.png" alt="">
+    </div>
+    <div class="estrella-3">
+        <img src="imagenes/estrella.png" alt="">
+    </div>
+    <div class="estrella-4">
+        <img src="imagenes/estrella.png" alt="">
+    </div>
+    <div class="estrella-5">
+        <img src="imagenes/estrella.png" alt="">
+    </div>
+    <div class="estrella-6">
+        <img src="imagenes/estrella.png" alt="">
+    </div>
+
+    <script>
+        var exprCorreo = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+        var exprContraseña = /^.{4,12}$/; // 4 a 12 digitos.
+
+        $(document).ready(function(){
+            $("#bConfirmar").click(function(){
+
+                var correo = $("#correo").val();
+                var contraseña = $("#contraseña").val();
+
+                if(correo == ""){
+                    alert("EL CORREO NO PUEDE ESTAR VACÍO")
+                    return false;
+                }
+
+                if(!exprCorreo.test(correo)){
+                    alert("EL FORMATO DEL CORREO NO ES CORRECTO")
+                    return false;
+                }
+
+                if(contraseña == ""){
+                    alert("LA CONTRASEÑA NO PUEDE ESTAR VACÍO")
+                    return false;
+                }
+
+                if(!exprContraseña.test(contraseña)){
+                    alert("EL FORMATO DE LA CONTRASEÑA NO ES CORRECTO")
+                    return false;
+                }
+            });
+        });
+    </script>
+
+    <div class="usuario">
+        <div class="titulo">
+            <h1>¡Bienvenido!</h1>
+        </div>
+        <div class="usuario-nombre">
+            <h4>CORREO</h4>
+        </div>
+        <div class="usuario-contraseña">
+            <h4>CONTRASEÑA</h4>
+        </div>
+        <div class="confirmar">
+        </div>
+
+        <form action="menú.html">
+            <input type="submit" id="bConfirmar" class= "bConfirmar" value="CONFIRMAR DATOS">
+        </form>
+
+        <div class="volver">
+        </div>
+        
+        <form action="menú.html">
+        <input type="submit" id="bVolver2" class= "bVolver2" value="VOLVER">
+        </form>
+
+
+
+        <form class="barra-usuario">
+            <input type="text" id="correo" name="Correo">
+        </form>
+
+
+
+        <form class="barra-contraseña">
+            <input type="password" id= "contraseña" name="Contraseña">
+        </form>
+
+
+
+    </div>
+</body>
+</html>

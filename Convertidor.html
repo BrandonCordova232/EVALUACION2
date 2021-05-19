@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Formulario BS</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+		<link rel="icon" href="imagenes/logo-luna.jpg">
+		<link rel="stylesheet" href="diseño/diseño.css">
+	</head>			
+		<script>	
+			$(function()
+			{ // $.post, $.get, $.ajax
+				$.getJSON('https://mindicador.cl/api', function(data) {
+						var indicadores = data;
+						$('.txtUf').val(indicadores.dolar.valor);	
+						
+					}).fail(function() {
+						console.log('Error al consumir la API!');
+				});
+				
+				$.getJSON('Comunas.json', function(data) {
+						
+					for(item in data)					
+						for(i=1; i<= 2; i++)
+						$('.divComunas').append(data[item][i]);
+				
+				}).fail(function() {
+						console.log('Error al consumir el archivo json!');
+				});
+				// se requiere servidor web 000webhost.com
+				$.getJSON('Comunas.json', function(data) {
+						
+					for(item in data)			
+						for(i=1; i<= 5; i++)
+					
+						$('.divComunas').append(data[item][i] + '<br>');
+				
+				}).fail(function() {
+						console.log('Error al consumir el archivo json!');
+				});
+				
+				
+				$('.btnLimpiar').click(function()
+				{
+					$('.txtValor, .txtPesos').val('');
+					$('.txtValor').focus();	
+					return false;
+				})
+				
+				$('.btnCambiar').click(function()
+				{
+					if($('.txtValor').val() == "")
+					{
+						alert('Debe especificar el valor de la propiedad en pesos chilenos');
+						$('.txtValor').focus();	
+					}
+					else
+					{
+						var uf = $('.txtUf').val();
+						var valor = $('.txtValor').val();
+						var pesos = valor/uf;					
+						$('.txtPesos').val(pesos);	
+					}
+					return false;
+				})			
+			})
+		</script>
+	<body id="convertir">
+		<div class="container">
+			<br>
+			<h1 class="text-center">TRANSFORMAR PESOS CHILENOS A DOLARES</h1>
+			<br>
+			<form action="hola.html" method="post">
+			<div class="row mt-2 mt-md-5">
+				<div class="col-12 col-md-3 offset-md-3 ">
+					VALOR DOLAR HOY
+				</div>
+				<div class="col-12 col-md-3">
+					<input type="text" name="txtUf" class="txtUf form-control text-right" readonly=readonly>
+				</div>
+			</div>
+			<div class="row mt-2 mt-md-5">
+				<div class="col-12 col-md-3 offset-md-3 ">
+					INGRESE VALOR EN PESOS CHILENOS
+				</div>
+				<div class="col-12 col-md-3">
+					<input type="text" name="txtValor" class="txtValor form-control text-right">
+				</div>
+			</div>
+			<div class="row mt-2 mt-md-5">
+				<div class="col-12 col-md-3 offset-md-3 ">
+					VALOR EN DOLARES
+				</div>
+				<div class="col-12 col-md-3">
+					<input type="text" name="txtPesos" class="txtPesos form-control text-right" readonly=readonly>
+				</div>
+			</div>
+			<div class="row mt-5">
+				<div class="col-12 col-md-3 offset-md-3 ">
+					Opciones
+				</div>
+				<div class="col-12 col-md-5">
+					<input type="submit" name="btnCambiar" class="btnCambiar btn btn-primary" value="Cambiar">
+					<input type="submit" name="btnLimpiar" class="btnLimpiar btn btn-light"   value="Limpiar">
+				</div>
+			</div>		
+			</form>	
+			<div class="divComunas"></div>	
+		</div>	
+		<div style="text-align: center;">
+			<span style="position:fixed; left: 4px;">
+			   <nav id="menu">
+				  <ul>
+					<li><a href="menú.html">INICIO</a>
+					</li>
+					<li><a href="libros.html">LIBROS</a></li>
+				  </ul>
+			   </nav>
+			</span>
+		</div> 
+	</body>
+</html>

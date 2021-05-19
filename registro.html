@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="javascript/validaciones.js"></script>
+    <title>Registro usuario</title>
+    <link rel="stylesheet" href="diseño/diseño.css">
+    <link rel="icon" href="imagenes/logo-luna.jpg">
+</head>
+<body>
+
+    <script>
+        var exprCorreo = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+        var exprNombre = /^[a-zA-ZÀ-ÿ\s]{1,40}$/; // Letras y espacios, pueden llevar
+        var exprApellido = /^[a-zA-ZÀ-ÿ\s]{1,40}$/; // Letras y espacios, pueden llevar
+        var exprContraseña = /^.{4,12}$/; // 4 a 12 digitos.
+        var exprRut = /^\d{8,14}$/; // 7 a 14 numeros.
+        var exprTelefono =  /^\d{10,14}$/; // 7 a 14 numeros.
+
+
+
+        $(document).ready(function(){
+            $("#bEnviar").click(function(){
+
+                var rut = $("#rut").val();
+                var nombre = $("#nombre").val();
+                var apellido = $("#apellido").val();
+                var correo = $("#correo").val();
+                var telefono = $("#telefono").val();
+                var contraseña = $("#contraseña").val();
+                var fecha_nacimiento = $("#fecha_nacimiento").val();
+                var region = $("#region").val();
+                var nivel_educacional = $("#nivel_educacional").val();
+ 
+                if(rut == ""){
+                    alert("EL RUT NO PUEDE ESTAR VACÍO")
+                    return false;
+                }
+
+                if(!exprRut.test(rut)){
+                    alert("EL FORMATO DEL RUT NO ES CORRECTO")
+                    return false;
+                }
+
+                if(nombre == ""){
+                    alert("EL NOMBRE NO PUEDE ESTAR VACÍO")
+                    return false;
+                }
+
+                if(!exprNombre.test(nombre)){
+                    alert("EL FORMATO DEL NOMBRE NO ES CORRECTO")
+                    return false;
+                }
+
+                if(apellido == ""){
+                    alert("EL APELLIDO NO PUEDE ESTAR VACÍO")
+                    return false;
+                }
+
+                if(!exprApellido.test(apellido)){
+                    alert("EL FORMATO DEL APELLIDO NO ES CORRECTO")
+                    return false;
+                }
+
+                if(correo == ""){
+                    alert("EL CORREO NO PUEDE ESTAR VACÍO")
+                    return false;
+                }
+
+                if(!exprCorreo.test(correo)){
+                    alert("EL FORMATO DEL CORREO NO ES CORRECTO")
+                    return false;
+                }
+
+                if(fecha_nacimiento == ""){
+                    alert("LA FECHA DE NACIMIENTO NO PUEDE ESTAR VACÍA")
+                    return false;
+                }
+
+                if(telefono == ""){
+                    alert("EL TELÉFONO NO PUEDE ESTAR VACÍO")
+                    return false;
+                }
+
+                if(!exprTelefono.test(telefono)){
+                    alert("EL FORMATO DEL TELÉFONO NO ES CORRECTO")
+                    return false;
+                }
+               
+                if(region == "..."){
+                    alert("LA REGIÓN NO PUEDE ESTAR VACÍA")
+                    return false;
+                }
+                if(nivel_educacional == "..."){
+                    alert("EL NIVEL EDUCACIONAL NO PUEDE ESTAR VACÍO")
+                    return false;
+                }
+                if(contraseña == ""){
+                    alert("LA CONTRASEÑA NO PUEDE ESTAR VACÍA")
+                    return false;
+                }
+
+                if(!exprContraseña.test(contraseña)){
+                    alert("EL FORMATO DE LA CONTRASEÑA NO ES CORRECTO")
+                    return false;
+                }
+            });
+        });
+    </script>
+
+    <body id="ingreso">
+        <div class="barras-laterales-1"></div>
+        <div class="barras-laterales-2"></div>
+        <div class="wrap" id="registro-usuario">
+                <span class="word"><s>MoonShop</s></span>
+        </div>
+        <div class="estrella">
+            <img src="imagenes/estrella.png" alt="">
+        </div>
+        <div class="estrella-2">
+            <img src="imagenes/estrella.png" alt="">
+        </div>
+        <div class="estrella-3">
+            <img src="imagenes/estrella.png" alt="">
+        </div>
+        <div class="estrella-4">
+            <img src="imagenes/estrella.png" alt="">
+        </div>
+        <div class="estrella-5">
+            <img src="imagenes/estrella.png" alt="">
+        </div>
+        <div class="estrella-6">
+            <img src="imagenes/estrella.png" alt="">
+        </div>
+
+
+
+        <div class="registro">
+            <div class="titulo">
+                <h1>Registro</h1>
+            </div>
+            <div class="rut">
+                <h3>RUT: </h3>
+            </div>
+            <div class="nombre">
+                <h3>NOMBRE: </h3>
+            </div>
+            <div class="apellido">
+                <h3>APELLIDO: </h3>
+            </div>
+            <div class="correo">
+                <h3>CORREO: </h3>
+            </div>
+            <div class="fecha-nac">
+                <h3>FECHA NAC: </h3>
+            </div>
+            <div class="telefono">
+                <h3>TELÉFONO: </h3>
+            </div>
+            <div class="region">
+                <h3>REGIÓN: </h3>
+            </div>
+            <div class="nivel-educacional">
+                <h3>NIVEL EDUC: </h3>
+            </div>
+            <div class="contraseña">
+                <h3>CONTRASEÑA: </h3>
+            </div>
+
+            <div class="confirmar-registro">
+            </div>
+
+            <div class="volver-registro">
+            </div>
+
+            <form action="menú.html">
+                <input type="submit" id="bVolver" class= "bVolver" value="VOLVER">
+            </form>
+
+            <form action="menú.html">
+                <input type="submit" id="bEnviar" class= "bEnviar" value="ENVIAR DATOS">
+            </form>
+
+            <form class="barra-rut">
+                <input type="text" id= "rut" name="Rut">
+            </form>
+
+
+
+            <form class="barra-nombre">
+                <input type="text" id= "nombre" name="Nombre">
+            </form>
+
+
+
+            <form class="barra-apellido">
+                <input type="text" id= "apellido" name="Apellido">
+            </form>
+
+
+
+            <form class="barra-correo">
+                <input type="text" id= "correo" name="Correo">
+            </form>
+
+
+
+            <span class="barra-fecha-nac">
+                <input type="date" id= "fecha_nacimiento" name="Fecha-nac">
+            </span>
+
+
+
+            <form class="barra-telefono">
+                <input type="text" id= "telefono" name="Telefono">
+            </form>
+
+
+
+            <form class="registro-barra-contraseña">
+                <input type="password" id= "contraseña" name="Contraseña">
+            </form>
+
+
+            <select class="seleccionar-region" id="region">
+                <option>...</option>
+                <option>Región de Arica y Parinacota.</option>
+                <option>Región de Tarapacá.</option>
+                <option>Región de Antofagasta.</option>
+                <option>Región de Atacama.</option>
+                <option>Región de Coquimbo.</option>
+                <option>Región de Valparaíso.</option>
+                <option>Región Metropolitana de Santiago.</option>
+                <option>Región del Libertador General Bernardo O’Higgins.</option>
+                <option>Región del Maule.</option>
+                <option>Región del Ñuble.</option>
+                <option>Región del Biobío.</option>
+                <option>Región de La Araucanía.</option>
+                <option>Región de Los Ríos.</option>
+                <option>Región de Los Lagos.</option>
+                <option>Región de Aysén del General Carlos Ibáñez del Campo.</option>
+                <option>Región de Magallanes y la Antártica Chilena.</option>
+            </select>
+            <select class="seleccionar-nivel-educacional" id="nivel_educacional">
+                <option>...</option>
+                <option>Doctor</option>
+                <option>Magíster</option>
+                <option>Profesional</option>
+                <option>E. Media</option>
+                <option>E. Básica</option>
+                <option>Otra</option>
+            </select>   
+</body>
+</html>

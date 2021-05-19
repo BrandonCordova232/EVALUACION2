@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="javascript/validaciones.js"></script>
+    <title>Registro usuario</title>
+    <link rel="stylesheet" href="diseño/diseño.css">
+    <link rel="icon" href="imagenes/logo-luna.jpg">
+</head>
+<body>
+
+    <script>
+        var exprMarca = /^[a-zA-ZÀ-ÿ\s]{1,10}$/; // Letras y espacios, pueden llevar
+        var exprDescripcion = /^.{20,60}$/; // 20 a 60 digitos.
+        var exprCosto = /^\d{4,8}$/; // 4 a 8 numeros.
+        var exprVenta = /^\d{4,8}$/; // 4 a 8 numeros.
+        var exprCodigoBarra =  /^\d{10,14}$/; // 10 a 14 numeros.
+
+
+
+        $(document).ready(function(){
+            $("#bEnviar").click(function(){
+
+                var codigoBarra = $("#codigo_barra").val();
+                var descripcion = $("#descripcion").val();
+                var costo = $("#precio_costo").val();
+                var venta = $("#precio_venta").val();
+                var marca = $("#marca").val();
+ 
+                if(codigoBarra == ""){
+                    alert("EL CODIGO DE BARRA NO PUEDE ESTAR VACÍO")
+                    return false;
+                }
+
+                if(!exprCodigoBarra.test(codigoBarra)){
+                    alert("EL FORMATO DEL CODIGO DE BARRA NO ES CORRECTO")
+                    return false;
+                }
+                if(descripcion == ""){
+                    alert("LA DESCRIPCIÓN NO PUEDE ESTAR VACÍA")
+                    return false;
+                }
+
+                if(!exprDescripcion.test(descripcion)){
+                    alert("EL FORMATO DE LA DESCRIPCIÓN NO ES CORRECTO")
+                    return false;
+                }
+                if(costo == ""){
+                    alert("EL PRECIO DE COSTO NO PUEDE ESTAR VACÍO")
+                    return false;
+                }
+
+                if(!exprCosto.test(costo)){
+                    alert("EL FORMATO DEL PRECIO DE COSTO NO ES CORRECTO")
+                    return false;
+                }
+                if(venta == ""){
+                    alert("EL PRECIO DE VENTA NO PUEDE ESTAR VACÍO")
+                    return false;
+                }
+
+                if(!exprVenta.test(venta)){
+                    alert("EL FORMATO DEL PRECIO DE VENTA NO ES CORRECTO")
+                    return false;
+                }
+                if(venta <= costo){
+                    alert("EL PRECIO DE VENTA NO PUEDE SER MENOR QUE EL DE COSTO")
+                    return false;
+                }
+
+                if(marca == ""){
+                    alert("LA MARCA NO PUEDE ESTAR VACÍA")
+                    return false;
+                }
+
+                if(!exprMarca.test(marca)){
+                    alert("EL FORMATO DE LA MARCA NO ES CORRECTO")
+                    return false;
+                }
+                
+            });
+        });
+    </script>
+
+    <body id="ingreso">
+        <div class="barras-laterales-1"></div>
+        <div class="barras-laterales-2"></div>
+        <div class="wrap" id="registro-usuario">
+                <span class="word"><s>MoonShop</s></span>
+        </div>
+        <div class="estrella">
+            <img src="imagenes/estrella.png" alt="">
+        </div>
+        <div class="estrella-2">
+            <img src="imagenes/estrella.png" alt="">
+        </div>
+        <div class="estrella-3">
+            <img src="imagenes/estrella.png" alt="">
+        </div>
+        <div class="estrella-4">
+            <img src="imagenes/estrella.png" alt="">
+        </div>
+        <div class="estrella-5">
+            <img src="imagenes/estrella.png" alt="">
+        </div>
+        <div class="estrella-6">
+            <img src="imagenes/estrella.png" alt="">
+        </div>
+
+
+
+        <div class="registro">
+            <div class="titulo">
+                <h1>Registro de productos</h1>
+            </div>
+            <div class="rut">
+                <h3>CODIGO DE BARRA: </h3>
+            </div>
+            <div class="nombre">
+                <h3>DESCRIPCIÓN: </h3>
+            </div>
+            <div class="precio-costo">
+                <h3>PRECIO COSTO: </h3>
+            </div>
+            <div class="precio-venta">
+                <h3>PRECIO VENTA: </h3>
+            </div>
+            <div class="marca">
+                <h3>MARCA: </h3>
+            </div>
+
+            <div class="confirmar-registro">
+            </div>
+
+            <div class="volver-registro">
+            </div>
+
+            <form action="menú.html">
+                <input type="submit" id="bVolver" class= "bVolver" value="VOLVER">
+            </form>
+
+            <form action="menú.html">
+                <input type="submit" id="bEnviar" class= "bEnviar" value="ENVIAR DATOS">
+            </form>
+
+            <form class="barra-codigo-barra">
+                <input type="text" id= "codigo_barra" name="Codigo-barra">
+            </form>
+
+
+
+            <form class="barra-descripcion">
+                <textarea name="Descripcion" id="descripcion" cols="30" rows="10"></textarea>
+            </form>
+
+
+
+            <form class="barra-precio-costo">
+                <input type="text" id= "precio_costo" name="Precio_costo">
+            </form>
+
+
+
+            <form class="barra-precio-venta">
+                <input type="text" id= "precio_venta" name="Precio_venta">
+            </form>
+
+
+
+            <span class="barra-marca">
+                <input type="text" id= "marca" name="Marca">
+            </span>
+
+</body>
+</html>
